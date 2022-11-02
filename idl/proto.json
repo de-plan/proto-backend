@@ -1,0 +1,82 @@
+{
+  "version": "0.1.0",
+  "name": "proto",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [],
+      "args": []
+    },
+    {
+      "name": "saveGeoJson",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "geoJson",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "geodata",
+          "type": {
+            "defined": "GeoData"
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GeoJsonData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "geojson",
+            "type": "string"
+          },
+          {
+            "name": "mongoId",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "GeoData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "geojson",
+            "type": "string"
+          },
+          {
+            "name": "mongoId",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "address": "CzpJ9weBNofFfa3WTr6HGSuAA29citaCXybasQvU8NLD"
+  }
+}
