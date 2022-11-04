@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { GeojsonModule } from './geojson/geojson.module';
+import { EventsModule } from './events/events.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { GeojsonModule } from './geojson/geojson.module';
       useUnifiedTopology: true,
     }),
     GeojsonModule,
+    EventsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
