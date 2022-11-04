@@ -26,12 +26,14 @@ export class EventsService {
     return event;
   }
 
-  findAll() {
-    return `This action returns all events`;
+  async findAll() {
+    const events = await this.eventModel.find({});
+    return events;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} event`;
+  async findOne(id: string) {
+    const event = await this.eventModel.findById(id);
+    return event;
   }
 
   update(id: number, updateEventDto: UpdateEventDto) {
