@@ -133,12 +133,15 @@ export class GeojsonService {
         type: createGeojsonDto.pdl_type,
       };
       const createdPdl = await this.pdlModel.create(pdl);
-      await this.geoJsonModel.findOneAndUpdate(
+      const updatedGeojsonRecord = await this.geoJsonModel.findOneAndUpdate(
         { _id: createdGeoJson._id },
         { pdl: createdPdl._id },
         { new: true },
       );
-      return createdGeoJson;
+      // return the pdl string in the response instead of it's mongo id
+      const updatedGeoJsonRecordObject = updatedGeojsonRecord.toObject();
+      updatedGeoJsonRecordObject.pdl = createdPdl.pdl;
+      return updatedGeoJsonRecordObject;
     } catch (error) {
       console.error(error);
 
